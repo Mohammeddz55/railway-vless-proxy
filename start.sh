@@ -5,8 +5,7 @@ PORT="${PORT:-8080}"
 XRAY_PORT=8081
 
 echo "=== Railway VLESS Proxy ==="
-echo "Public port (Caddy): ${PORT}"
-echo "Internal port (Xray): ${XRAY_PORT}"
+echo "Public: ${PORT}, Internal: ${XRAY_PORT}"
 
 cat > /app/Caddyfile <<EOF
 {
@@ -32,5 +31,4 @@ caddy run --config /app/Caddyfile --adapter caddyfile &
 CADDY_PID=$!
 
 wait -n "$XRAY_PID" "$CADDY_PID" || true
-echo "Process died, exiting for Railway to restart"
 exit 0
