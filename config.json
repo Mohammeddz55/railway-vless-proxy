@@ -6,14 +6,13 @@
   },
   "inbounds": [
     {
-      "tag": "vless-ws-in",
       "listen": "127.0.0.1",
       "port": 8081,
       "protocol": "vless",
       "settings": {
         "clients": [
           {
-            "id": "944b54e0-e81b-4fa9-bc26-65b81d3ed393",
+            "id": "e674287a-1f1a-417c-b520-becd6169a8cd",
             "flow": ""
           }
         ],
@@ -30,26 +29,10 @@
   ],
   "outbounds": [
     {
-      "tag": "direct",
       "protocol": "freedom",
       "settings": {
         "domainStrategy": "UseIPv4"
       }
-    },
-    {
-      "tag": "block",
-      "protocol": "blackhole",
-      "settings": {}
     }
-  ],
-  "routing": {
-    "domainStrategy": "UseIPv4",
-    "rules": [
-      {
-        "type": "field",
-        "inboundTag": ["vless-ws-in"],
-        "outboundTag": "direct"
-      }
-    ]
-  }
+  ]
 }
