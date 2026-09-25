@@ -1,0 +1,55 @@
+{
+  "log": {
+    "loglevel": "warning",
+    "access": "/dev/stdout",
+    "error": "/dev/stderr"
+  },
+  "inbounds": [
+    {
+      "tag": "vless-ws-in",
+      "listen": "127.0.0.1",
+      "port": 8081,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "944b54e0-e81b-4fa9-bc26-65b81d3ed393",
+            "flow": ""
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "path": "/ws"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {
+        "domainStrategy": "UseIPv4"
+      }
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ],
+  "routing": {
+    "domainStrategy": "UseIPv4",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": ["vless-ws-in"],
+        "outboundTag": "direct"
+      }
+    ]
+  }
+}
