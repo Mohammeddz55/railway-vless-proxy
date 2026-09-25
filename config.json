@@ -22,7 +22,7 @@
         "network": "ws",
         "security": "none",
         "wsSettings": {
-          "path": "/ws"
+          "path": "/"
         }
       }
     }
